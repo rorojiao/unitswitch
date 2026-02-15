@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Temperature Converter - UnitSwitch ⚖️</title>
+<meta name="description" content="Convert temperature instantly: Celsius, Fahrenheit, Kelvin with live thermometer visualization.">
+<meta name="keywords" content="temperature converter, celsius to fahrenheit, fahrenheit to celsius, kelvin converter">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo"><span>⚖️</span> UnitSwitch</a>
+  <nav>
+    <a href="index.html" data-i18n="home">Home</a>
+    <a href="length.html" data-i18n="length">Length</a>
+    <a href="weight.html" data-i18n="weight">Weight</a>
+    <a href="temperature.html" class="active" data-i18n="temperature">Temperature</a>
+    <select id="langSel"><option value="en">EN</option><option value="zh">中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">ES</option></select>
+  </nav>
+</header>
+<main>
+  <h1>🌡️ <span data-i18n="temperature">Temperature</span></h1>
+  <p class="subtitle" data-i18n="tempDesc">°C, °F, K with live thermometer</p>
+  <div class="converter">
+    <div class="unit-group">
+      <label data-i18n="from">From</label>
+      <select id="fromUnit">
+        <option value="celsius" data-i18n="celsius">Celsius (°C)</option>
+        <option value="fahrenheit" data-i18n="fahrenheit">Fahrenheit (°F)</option>
+        <option value="kelvin" data-i18n="kelvin">Kelvin (K)</option>
+      </select>
+      <input type="number" id="fromVal" value="25" step="any">
+    </div>
+    <div class="swap-btn"><button onclick="swapUnits()" title="Swap">⇅</button></div>
+    <div class="unit-group">
+      <label data-i18n="to">To</label>
+      <select id="toUnit">
+        <option value="celsius" data-i18n="celsius">Celsius (°C)</option>
+        <option value="fahrenheit" selected data-i18n="fahrenheit">Fahrenheit (°F)</option>
+        <option value="kelvin" data-i18n="kelvin">Kelvin (K)</option>
+      </select>
+      <input type="number" id="toVal" readonly>
+    </div>
+    <div class="thermo-wrap">
+      <div>
+        <div class="thermometer"><div class="thermo-fill" id="thermoFill"></div></div>
+        <div class="thermo-label" id="thermoLabel">25°C</div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer>
+  <p data-i18n="footer">Made with 💜 by UnitSwitch</p>
+  <a class="tip-btn" href="https://etherscan.io/address/0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823" target="_blank" data-i18n="tipText">Buy me a coffee ☕</a>
+</footer>
+<script src="i18n.js"></script>
+<script>
+function toCelsius(v,u){
+  if(u==='celsius')return v;if(u==='fahrenheit')return(v-32)*5/9;return v-273.15;
+}
+function fromCelsius(c,u){
+  if(u==='celsius')return c;if(u==='fahrenheit')return c*9/5+32;return c+273.15;
+}
+function convert(){
+  const v=parseFloat(document.getElementById('fromVal').value)||0;
+  const f=document.getElementById('fromUnit').value;
+  const tt=document.getElementById('toUnit').value;
+  const c=toCelsius(v,f);
+  const result=fromCelsius(c,tt);
+  document.getElementById('toVal').value=+result.toPrecision(10);
+  // Thermometer: map -40°C..120°C to 0..100%
+  const pct=Math.max(0,Math.min(100,(c+40)/160*100));
+  document.getElementById('thermoFill').style.height=pct+'%';
+  document.getElementById('thermoLabel').textContent=Math.round(c)+'°C';
+}
+function swapUnits(){
+  const f=document.getElementById('fromUnit'),tt=document.getElementById('toUnit');
+  [f.value,tt.value]=[tt.value,f.value];convert();
+}
+document.getElementById('fromVal').addEventListener('input',convert);
+document.getElementById('fromUnit').addEventListener('change',convert);
+document.getElementById('toUnit').addEventListener('change',convert);
+convert();
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weight Converter - UnitSwitch ⚖️</title>
+<meta name="description" content="Convert weight units instantly: kg, g, lb, oz, ton, 斤, 两. kg to lbs and more.">
+<meta name="keywords" content="weight converter, kg to lbs, pounds to kg, ounces to grams">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo"><span>⚖️</span> UnitSwitch</a>
+  <nav>
+    <a href="index.html" data-i18n="home">Home</a>
+    <a href="length.html" data-i18n="length">Length</a>
+    <a href="weight.html" class="active" data-i18n="weight">Weight</a>
+    <a href="temperature.html" data-i18n="temperature">Temperature</a>
+    <select id="langSel"><option value="en">EN</option><option value="zh">中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">ES</option></select>
+  </nav>
+</header>
+<main>
+  <h1>⚖️ <span data-i18n="weight">Weight</span></h1>
+  <p class="subtitle" data-i18n="weightDesc">kg, g, lb, oz, ton, 斤, 两</p>
+  <div class="converter">
+    <div class="unit-group">
+      <label data-i18n="from">From</label>
+      <select id="fromUnit">
+        <option value="kilogram" data-i18n="kilogram">Kilogram</option>
+        <option value="gram" data-i18n="gram">Gram</option>
+        <option value="pound" data-i18n="pound">Pound</option>
+        <option value="ounce" data-i18n="ounce">Ounce</option>
+        <option value="ton" data-i18n="ton">Metric Ton</option>
+        <option value="jin" data-i18n="jin">Jin (斤)</option>
+        <option value="liang" data-i18n="liang">Liang (两)</option>
+      </select>
+      <input type="number" id="fromVal" value="1" step="any">
+    </div>
+    <div class="swap-btn"><button onclick="swapUnits()" title="Swap">⇅</button></div>
+    <div class="unit-group">
+      <label data-i18n="to">To</label>
+      <select id="toUnit">
+        <option value="kilogram" data-i18n="kilogram">Kilogram</option>
+        <option value="gram" data-i18n="gram">Gram</option>
+        <option value="pound" selected data-i18n="pound">Pound</option>
+        <option value="ounce" data-i18n="ounce">Ounce</option>
+        <option value="ton" data-i18n="ton">Metric Ton</option>
+        <option value="jin" data-i18n="jin">Jin (斤)</option>
+        <option value="liang" data-i18n="liang">Liang (两)</option>
+      </select>
+      <input type="number" id="toVal" readonly>
+    </div>
+  </div>
+</main>
+<footer>
+  <p data-i18n="footer">Made with 💜 by UnitSwitch</p>
+  <a class="tip-btn" href="https://etherscan.io/address/0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823" target="_blank" data-i18n="tipText">Buy me a coffee ☕</a>
+</footer>
+<script src="i18n.js"></script>
+<script>
+const toKg={kilogram:1,gram:0.001,pound:0.45359237,ounce:0.028349523125,ton:1000,jin:0.5,liang:0.05};
+function convert(){
+  const v=parseFloat(document.getElementById('fromVal').value)||0;
+  const f=document.getElementById('fromUnit').value;
+  const tt=document.getElementById('toUnit').value;
+  document.getElementById('toVal').value=+(v*toKg[f]/toKg[tt]).toPrecision(10);
+}
+function swapUnits(){
+  const f=document.getElementById('fromUnit'),tt=document.getElementById('toUnit');
+  [f.value,tt.value]=[tt.value,f.value];convert();
+}
+document.getElementById('fromVal').addEventListener('input',convert);
+document.getElementById('fromUnit').addEventListener('change',convert);
+document.getElementById('toUnit').addEventListener('change',convert);
+convert();
+</script>
+</body>
+</html>

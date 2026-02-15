@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UnitSwitch ⚖️ - Universal Unit Converter</title>
+<meta name="description" content="Free online unit converter. Convert length, weight, temperature instantly. kg to lbs, celsius to fahrenheit, miles to km and more.">
+<meta name="keywords" content="unit converter, kg to lbs, celsius to fahrenheit, miles to km, unit conversion, 单位换算">
+<meta property="og:title" content="UnitSwitch ⚖️ - Universal Unit Converter">
+<meta property="og:description" content="Convert any unit instantly. Length, weight, temperature and more.">
+<link rel="canonical" href="https://rorojiao.github.io/unitswitch/">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo"><span>⚖️</span> UnitSwitch</a>
+  <nav>
+    <a href="index.html" class="active" data-i18n="home">Home</a>
+    <a href="length.html" data-i18n="length">Length</a>
+    <a href="weight.html" data-i18n="weight">Weight</a>
+    <a href="temperature.html" data-i18n="temperature">Temperature</a>
+    <select id="langSel">
+      <option value="en">EN</option><option value="zh">中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">ES</option>
+    </select>
+  </nav>
+</header>
+<main>
+  <h1 data-i18n="siteTitle">UnitSwitch ⚖️</h1>
+  <p class="subtitle" data-i18n="tagline">Universal Unit Converter</p>
+  <div class="cards">
+    <a href="length.html" class="card">
+      <div class="icon">📏</div>
+      <h2 data-i18n="length">Length</h2>
+      <p data-i18n="lengthDesc">m, km, mi, ft, in, cm, mm, yd</p>
+    </a>
+    <a href="weight.html" class="card">
+      <div class="icon">⚖️</div>
+      <h2 data-i18n="weight">Weight</h2>
+      <p data-i18n="weightDesc">kg, g, lb, oz, ton, 斤, 两</p>
+    </a>
+    <a href="temperature.html" class="card">
+      <div class="icon">🌡️</div>
+      <h2 data-i18n="temperature">Temperature</h2>
+      <p data-i18n="tempDesc">°C, °F, K with live thermometer</p>
+    </a>
+  </div>
+</main>
+<footer>
+  <p data-i18n="footer">Made with 💜 by UnitSwitch</p>
+  <a class="tip-btn" href="https://etherscan.io/address/0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823" target="_blank" data-i18n="tipText">Buy me a coffee ☕</a>
+</footer>
+<script src="i18n.js"></script>
+</body>
+</html>
