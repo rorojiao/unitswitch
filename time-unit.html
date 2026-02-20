@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>时间换算 | UnitSwitch</title>
+<meta name="description" content="在线时间单位换算。">
+<meta name="keywords" content="时间换算,秒分时天">
+<link rel="canonical" href="https://rorojiao.github.io/unitswitch/time-unit.html">
+<link rel="stylesheet" href="style.css">
+<meta property="og:title" content="时间换算 | UnitSwitch">
+<meta property="og:description" content="在线时间单位换算。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rorojiao.github.io/unitswitch/time-unit.html">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"时间换算","url":"https://rorojiao.github.io/unitswitch/time-unit.html","description":"在线时间单位换算。"}</script>
+</head>
+<body>
+<header class="header"><div class="header-inner">
+<a href="index.html" class="logo">🔄 UnitSwitch 单位换算</a>
+<button class="nav-toggle" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button>
+<nav class="nav"><a href="index.html">首页</a><a href="length.html">长度</a><a href="weight.html">重量</a><a href="temperature.html">温度</a><a href="area.html">面积</a><a href="volume.html">体积</a><a href="speed.html">速度</a><a href="time-unit.html" class=active>时间</a><a href="data.html">数据</a><a href="pressure.html">压力</a></nav>
+</div></header>
+<div class="container">
+<h1>时间换算</h1><p class="subtitle">多种单位互转</p><div class="card"><div class="form-group"><label>数值</label><input type="number" id="val" value="1" oninput="conv()" step="any"></div><div class="form-group"><label>从</label><select id="from" onchange="conv()" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;font-size:16px"></select></div><div id="results" style="margin-top:15px;font-size:18px"></div></div><script>const U={"秒":1,"分钟":60,"小时":3600,"天":86400,"周":604800,"月":2592000,"年":31536000,"毫秒":0.001};const sel=document.getElementById("from");Object.keys(U).forEach(k=>{const o=document.createElement("option");o.value=k;o.textContent=k;sel.appendChild(o)});function conv(){const v=+document.getElementById("val").value,f=sel.value;const base=v*U[f];let h="";Object.entries(U).forEach(([k,r])=>{h+="<p>"+k+": <b>"+(base/r).toPrecision(8).replace(/\.?0+$/,"")+"</b></p>"});document.getElementById("results").innerHTML=h}conv()</script>
+</div>
+<div class="more-tools" style="max-width:800px;margin:40px auto;padding:20px;background:#f8f9fa;border-radius:12px;text-align:center">
+<h3 style="margin-bottom:12px">🔗 更多免费工具</h3>
+<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center"><a href="https://rorojiao.github.io/calcsmart/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">⚡智算</a>
+<a href="https://rorojiao.github.io/healthcalc/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">💪健康</a>
+<a href="https://rorojiao.github.io/devtoolbox/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🛠️开发</a>
+<a href="https://rorojiao.github.io/fortune-tools/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">🔮算命</a>
+<a href="https://rorojiao.github.io/datecalc/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">📅日期</a>
+<a href="https://rorojiao.github.io/namegenius/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">✨起名</a>
+<a href="https://rorojiao.github.io/cryptogauge/" style="padding:6px 14px;background:#fff;border-radius:20px;text-decoration:none;color:#333;border:1px solid #e0e0e0;font-size:14px">₿加密</a></div></div>
+<div class="donate"><p>☕ 觉得好用？打赏一杯咖啡</p><p>ETH/USDT: <code>0xEeD903787Cb86bcCc17777E5C7d10A4c2De43823</code></p></div>
+<div style="text-align:center;margin:20px auto;max-width:728px;"><iframe data-aa="2427662" src="//acceptable.a-ads.com/2427662/?size=Adaptive" style="border:0;padding:0;width:100%;height:auto;min-height:60px;overflow:hidden;display:block;margin:auto;"></iframe></div>
+<footer class="footer">© 2026 UnitSwitch 单位换算</footer>
+<script>fetch("https://site-analytics.cap.1ktower.com/hit?s="+encodeURIComponent(location.hostname)+"&p="+encodeURIComponent(location.pathname)).catch(()=>{})</script>
+</body>
+</html>
